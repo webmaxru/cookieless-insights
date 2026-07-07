@@ -1,0 +1,95 @@
+{
+  "name": "@webmaxru/cookieless-insights",
+  "version": "0.1.0",
+  "description": "Cookieless, consent-banner-free Real User Monitoring for static sites — sends page views and events to your own Azure Application Insights (free tier). Tiny beacon by default (~1–2 KB), optional Application Insights SDK adapter.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Maxim Salnikov (https://github.com/webmaxru)",
+  "homepage": "https://github.com/webmaxru/cookieless-insights#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/webmaxru/cookieless-insights.git"
+  },
+  "bugs": {
+    "url": "https://github.com/webmaxru/cookieless-insights/issues"
+  },
+  "keywords": [
+    "analytics",
+    "rum",
+    "real-user-monitoring",
+    "cookieless",
+    "no-cookie-banner",
+    "gdpr",
+    "privacy",
+    "telemetry",
+    "azure",
+    "application-insights",
+    "azure-monitor",
+    "static-site",
+    "spa",
+    "beacon"
+  ],
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./appinsights": {
+      "types": "./dist/appinsights.d.ts",
+      "import": "./dist/appinsights.js",
+      "require": "./dist/appinsights.cjs"
+    },
+    "./package.json": "./package.json"
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "bin": {
+    "cookieless-insights": "./bin/cli.mjs"
+  },
+  "files": [
+    "dist",
+    "bin",
+    "azure",
+    "scripts",
+    "skill",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "prepublishOnly": "npm run build",
+    "changeset": "changeset",
+    "version": "changeset version",
+    "release": "changeset publish"
+  },
+  "peerDependencies": {
+    "@microsoft/applicationinsights-web": ">=3"
+  },
+  "peerDependenciesMeta": {
+    "@microsoft/applicationinsights-web": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.27.0",
+    "@microsoft/applicationinsights-web": "^3.3.0",
+    "jsdom": "^25.0.0",
+    "tsup": "^8.3.0",
+    "typescript": "^5.6.0",
+    "vitest": "^2.1.0"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  }
+}
