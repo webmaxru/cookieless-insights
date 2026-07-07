@@ -47,7 +47,7 @@
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "bin": {
-    "cookieless-insights": "./bin/cli.mjs"
+    "cookieless-insights": "bin/cli.mjs"
   },
   "files": [
     "dist",

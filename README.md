@@ -159,6 +159,15 @@ All Azure commands shell out to the [Azure CLI](https://learn.microsoft.com/cli/
 - [React + Vite](examples/react-vite.md)
 - [Vanilla / any bundler](examples/vanilla.md)
 
+## Releasing (maintainers)
+
+Versioning uses [changesets](https://github.com/changesets/changesets); publishing uses npm
+**OIDC Trusted Publishing** (no `NPM_TOKEN`). The Release workflow is gated behind the
+`ENABLE_NPM_PUBLISH` repo variable. To enable it (one-time): bootstrap the first publish
+manually (`npm publish --access public` — Trusted Publishing can't create a brand-new name),
+configure Trusted Publishing on npm for this repo, then `gh variable set ENABLE_NPM_PUBLISH --body true`.
+Thereafter, add a changeset (`npx changeset`) and merge the auto-created "Version Packages" PR to publish.
+
 ## License
 
 [MIT](LICENSE) © Maxim Salnikov

@@ -1,16 +1,22 @@
 name: Release
 
 # Publishes to npm via OIDC Trusted Publishing (no long-lived NPM_TOKEN).
-# Prerequisites (one-time):
-#   1. Configure npm Trusted Publishing for @webmaxru/cookieless-insights with
-#      this repo + workflow as the trusted publisher (npmjs.com > package > Settings).
-#   2. Trusted Publishing cannot create a brand-new package name, so the very first
-#      publish must be bootstrapped once manually: `npm publish --access public`
-#      (with a temporary token / OTP). Subsequent releases run here tokenlessly.
+#
+# This job is GATED behind the `ENABLE_NPM_PUBLISH` repo variable so pushes don't
+# attempt to publish before the package is ready. To enable ongoing tokenless
+# releases (one-time):
+#   1. Bootstrap the FIRST publish manually — Trusted Publishing cannot create a
+#      brand-new package name: `npm publish --access public` (with a temp token/OTP).
+#   2. Configure npm Trusted Publishing for @webmaxru/cookieless-insights with this
+#      repo + workflow as the trusted publisher (npmjs.com > package > Settings).
+#   3. Set the repo variable ENABLE_NPM_PUBLISH=true
+#      (`gh variable set ENABLE_NPM_PUBLISH --body true`).
+# After that, merging the changesets "Version Packages" PR publishes automatically.
 
 on:
   push:
     branches: [main]
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -21,6 +27,8 @@ concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 jobs:
   release:
+    # Skipped (green) until publishing is enabled — see the header comment.
+    if: ${{ vars.ENABLE_NPM_PUBLISH == 'true' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
