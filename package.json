@@ -1,6 +1,6 @@
 {
   "name": "@webmaxru/cookieless-insights",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Cookieless, consent-banner-free Real User Monitoring for static sites — sends page views and events to your own Azure Application Insights (free tier). Tiny beacon by default (~1–2 KB), optional Application Insights SDK adapter.",
   "type": "module",
   "license": "MIT",
@@ -54,7 +54,7 @@
     "bin",
     "azure",
     "scripts",
-    "skill",
+    "skills",
     "README.md",
     "LICENSE"
   ],

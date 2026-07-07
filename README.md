@@ -159,6 +159,34 @@ All Azure commands shell out to the [Azure CLI](https://learn.microsoft.com/cli/
 - [React + Vite](examples/react-vite.md)
 - [Vanilla / any bundler](examples/vanilla.md)
 
+## Use with an AI agent (skill)
+
+This repo ships an agent **skill** ([`skills/cookieless-insights`](skills/cookieless-insights/SKILL.md))
+so your coding agent (GitHub Copilot, Claude Code, Cursor, …) can perform the whole
+instrumentation for you. Install it with [APM](https://github.com/microsoft/apm) or the
+[`skills`](https://github.com/vercel-labs/skills) CLI:
+
+```bash
+# APM (Agent Package Manager)
+apm install webmaxru/cookieless-insights/skills/cookieless-insights
+
+# npx skills
+npx skills add webmaxru/cookieless-insights --skill cookieless-insights
+```
+
+Then just ask your agent:
+
+> Instrument this static site with cookieless-insights.
+
+Or paste the fuller [**sample prompt**](skills/cookieless-insights/PROMPT.md):
+
+> Instrument this static site with cookieless Azure Application Insights using
+> `@webmaxru/cookieless-insights` — **no cookie/GDPR banner, Azure free tier only**. Reuse my
+> project's resource group if it exists (else create one), wire page views + all key
+> interactions (debounce sliders/typing), inject the connection string at **build time** via a
+> CI variable, deploy the engagement dashboard, add the report command, then build, commit, and
+> **redeploy**. Use the beacon transport; keep a one-line kill switch.
+
 ## Releasing (maintainers)
 
 Versioning uses [changesets](https://github.com/changesets/changesets); publishing uses npm

@@ -1,12 +1,16 @@
 ---
 name: cookieless-insights
 description: Instrument any static website (SPA) with cookieless Azure Application Insights Real User Monitoring — no cookie/GDPR banner, free tier only — using the @webmaxru/cookieless-insights package + CLI. Covers Azure setup, code wiring (incl. build step), a Portal dashboard, and a terminal engagement report. WHEN making a static site/SPA observable, "add analytics without a cookie banner", cookieless RUM, privacy-friendly analytics, Application Insights for a frontend/GitHub Pages/Static Web Apps/Netlify/S3, page views + engagement + geo + key events.
-version: 1.0.0
+version: 1.0.1
 author: webmaxru
 license: MIT
 ---
 
 # Instrument a static site with cookieless Azure Application Insights
+
+> **Sample request prompt:** see [`PROMPT.md`](./PROMPT.md) for a ready-to-paste prompt. Once
+> this skill is installed, "Instrument this static site with cookieless-insights" is enough.
+
 
 Use the **`@webmaxru/cookieless-insights`** package + CLI to give any static front end
 privacy-friendly Real User Monitoring that needs **no cookie/GDPR banner** and stays on
