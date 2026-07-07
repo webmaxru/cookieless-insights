@@ -6,10 +6,12 @@ export type TelemetryMeasurements = Record<string, number>;
 
 export interface InitOptions {
   /**
-   * Application Insights connection string. This is a public, client-side
-   * ingestion key (write-only) — it is expected to ship in the browser bundle.
+   * Application Insights connection string — a public, client-side ingestion key
+   * (write-only) that is expected to ship in the browser bundle. Optional so you
+   * can pass an env var directly (`init({ connectionString: import.meta.env.X })`);
+   * when it is missing/undefined, the client is a safe no-op.
    */
-  connectionString: string;
+  connectionString?: string;
   /**
    * Master kill switch. When `false`, nothing initializes and no telemetry is
    * ever sent. Default `true`.

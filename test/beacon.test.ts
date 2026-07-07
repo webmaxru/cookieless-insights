@@ -116,4 +116,12 @@ describe('createBeaconClient', () => {
     expect(sendCount()).toBe(0);
     expect(a.enabled).toBe(false);
   });
+
+  it('is a no-op when connectionString is omitted', () => {
+    const a = createBeaconClient({});
+    a.trackEvent('X');
+    a.flush();
+    expect(sendCount()).toBe(0);
+    expect(a.enabled).toBe(false);
+  });
 });
